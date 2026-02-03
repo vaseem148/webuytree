@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, Send, ShieldCheck, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 /* ================= ANIMATION ================= */
@@ -21,15 +21,9 @@ const stagger = {
 };
 
 export default function TreeRequestForm() {
+  const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
-
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [treeType, setTreeType] = useState("");
-  const [purpose, setPurpose] = useState("");
-  const [details, setDetails] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,27 +31,15 @@ export default function TreeRequestForm() {
     setStatus("");
 
     emailjs
-      .send(
+      .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          full_name: fullName,
-          phone,
-          location,
-          tree_type: treeType,
-          purpose,
-          message: details,
-        },
+        formRef.current,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         setStatus("success");
-        setFullName("");
-        setPhone("");
-        setLocation("");
-        setTreeType("");
-        setPurpose("");
-        setDetails("");
+        formRef.current.reset();
       })
       .catch(() => setStatus("error"))
       .finally(() => setLoading(false));
@@ -78,8 +60,7 @@ export default function TreeRequestForm() {
           </motion.h2>
 
           <motion.p variants={fadeUp} className="text-lg text-[#355f4b] max-w-xl mb-10">
-            Fill out the form with your details and we'll get back to you within
-            24–48 hours.
+            Fill out the form with your details and we'll get back to you within 24–48 hours.
           </motion.p>
 
           <motion.ul variants={stagger} className="space-y-4">
@@ -105,100 +86,77 @@ export default function TreeRequestForm() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="bg-[#ffffff] rounded-3xl p-10 shadow-xl border border-[#e6ede3]"
+          className="bg-white rounded-3xl p-10 shadow-xl border border-[#e6ede3]"
         >
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
 
-            {/* ROW 1 */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm mb-1 text-[#0f2f1f]">
-                  Full Name *
-                </label>
+                <label className="block text-sm mb-1 text-[#0f2f1f]">Full Name *</label>
                 <input
                   type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  name="full_name"
                   required
                   placeholder="Your full name"
-                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2f6f4f]"
+                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:ring-2 focus:ring-[#2f6f4f] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm mb-1 text-[#0f2f1f]">
-                  Phone Number *
-                </label>
+                <label className="block text-sm mb-1 text-[#0f2f1f]">Phone Number *</label>
                 <input
                   type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  name="phone"
                   required
                   placeholder="Your phone number"
-                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2f6f4f]"
+                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:ring-2 focus:ring-[#2f6f4f] outline-none"
                 />
               </div>
             </div>
 
-            {/* LOCATION */}
             <div>
-              <label className="block text-sm mb-1 text-[#0f2f1f]">
-                Property Location *
-              </label>
+              <label className="block text-sm mb-1 text-[#0f2f1f]">Property Location *</label>
               <input
                 type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                name="location"
                 required
                 placeholder="Village, District, State"
-                className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2f6f4f]"
+                className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:ring-2 focus:ring-[#2f6f4f] outline-none"
               />
             </div>
 
-            {/* ROW 2 */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm mb-1 text-[#0f2f1f]">
-                  Tree Type/Species
-                </label>
+                <label className="block text-sm mb-1 text-[#0f2f1f]">Tree Type / Species</label>
                 <input
                   type="text"
-                  value={treeType}
-                  onChange={(e) => setTreeType(e.target.value)}
-                  placeholder="e.g., Teak, Neem, Mango"
-                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2f6f4f]"
+                  name="tree_type"
+                  placeholder="Teak, Neem, Mango"
+                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:ring-2 focus:ring-[#2f6f4f] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm mb-1 text-[#0f2f1f]">
-                  Purpose
-                </label>
+                <label className="block text-sm mb-1 text-[#0f2f1f]">Purpose</label>
                 <input
                   type="text"
-                  value={purpose}
-                  onChange={(e) => setPurpose(e.target.value)}
+                  name="purpose"
                   placeholder="Sale / Removal"
-                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2f6f4f]"
+                  className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:ring-2 focus:ring-[#2f6f4f] outline-none"
                 />
               </div>
             </div>
 
-            {/* DETAILS */}
             <div>
-              <label className="block text-sm mb-1 text-[#0f2f1f]">
-                Additional Details
-              </label>
+              <label className="block text-sm mb-1 text-[#0f2f1f]">Additional Details</label>
               <textarea
+                name="message"
                 rows="4"
-                value={details}
-                onChange={(e) => setDetails(e.target.value)}
-                placeholder="Number of trees, approximate age, any special circumstances..."
-                className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2f6f4f]"
+                placeholder="Number of trees, age, any special details..."
+                className="w-full rounded-xl bg-[#f4f2ea] border border-[#d7e1d6] px-4 py-3 focus:ring-2 focus:ring-[#2f6f4f] outline-none"
               />
             </div>
 
-            {/* SUBMIT */}
             <button
               type="submit"
               disabled={loading}
@@ -215,18 +173,15 @@ export default function TreeRequestForm() {
               <p className="text-red-600 text-sm">❌ Failed to send. Try again.</p>
             )}
 
-            {/* NOTICE */}
             <div className="flex gap-3 bg-[#f4f2ea] rounded-xl p-4 text-sm text-[#355f4b]">
               <ShieldCheck className="w-5 h-5 shrink-0" />
               <p>
-                <strong className="text-[#0f2f1f]">Important:</strong> Requests
-                without proper documents will not be processed.
+                <strong className="text-[#0f2f1f]">Important:</strong> Requests without proper documents will not be processed.
               </p>
             </div>
 
           </form>
         </motion.div>
-
       </div>
     </section>
   );
