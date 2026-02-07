@@ -6,18 +6,22 @@ const Home = () => {
 
         {/* 🎥 Video Background */}
         <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/forest2.mp4" type="video/mp4" />
-        </video>
+  autoPlay
+  muted
+  loop
+  playsInline
+  controls
+  className="w-full h-96"
+>
+  <source src="/forest2.mp4" type="video/mp4" />
+</video>
+
 
         {/* 🌿 Dark Overlay */}
-        <div className="absolute inset-0 bg-[#0f2a1c]/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[#0f2a1c]/60" />
+
+        {/* Navbar */}
+        {/* <Navbar /> */}
 
         {/* Content */}
         <div className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-6">
@@ -47,18 +51,18 @@ const Home = () => {
           <div className="mt-10 flex gap-4 flex-wrap justify-center">
             
             <a
-              href="#request"
-              className="bg-white text-green-900 px-8 py-3 rounded-xl font-semibold hover:scale-105 transition"
-            >
-              Submit Tree Request
-            </a>
+  href="#request"
+  className="bg-white text-green-900 px-8 py-3 rounded-xl font-semibold hover:scale-105 transition"
+>
+  Submit Tree Request
+</a>
 
-            <a
-              href="#documents"
-              className="border border-white/40 px-8 py-3 rounded-xl hover:bg-white/10 transition"
-            >
-              View Documents
-            </a>
+<a
+  href="#documents"
+  className="border border-white/40 px-8 py-3 rounded-xl hover:bg-white/10 transition"
+>
+  View Documents
+</a>
 
           </div>
 
@@ -71,6 +75,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      
   )
 };
 
