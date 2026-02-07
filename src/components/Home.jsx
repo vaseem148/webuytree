@@ -10,14 +10,14 @@ const Home = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src="/forest2.mp4" type="video/mp4" />
 
         </video>
 
         {/* 🌿 Dark Overlay */}
-        <div className="absolute inset-0 bg-[#0f2a1c]/60" />
+        <div className="absolute inset-0 bg-[#0f2a1c]/60 z-10" />
 
         {/* Navbar */}
         {/* <Navbar /> */}
