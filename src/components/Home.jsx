@@ -7,15 +7,16 @@ const Home = () => {
         {/* 🎥 Video Background */}
         <video
   autoPlay
-  loop
   muted
+  loop
   playsInline
   preload="auto"
-  poster="/forest2.mp4"
+  onLoadedData={(e) => e.currentTarget.play()}
   className="absolute inset-0 w-full h-full object-cover"
 >
   <source src="/forest2.mp4" type="video/mp4" />
 </video>
+
 
 
 
