@@ -4,15 +4,8 @@ const Home = () => {
   return (
     <section id="home" className="relative min-h-screen text-white overflow-hidden">
 
-        <video
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="auto"
-  poster="/forest2.mp4"
-  className="absolute inset-0 w-full h-full object-cover"
->
+        {/* 🎥 Video Background */}
+        <video autoPlay muted controls className="w-full h-96">
   <source src="/forest2.mp4" type="video/mp4" />
 </video>
 
