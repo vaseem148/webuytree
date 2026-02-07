@@ -2,22 +2,25 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <section id="home" className="relative z-10 min-h-screen text-white overflow-hidden">
+    <section id="home" className="relative min-h-screen text-white overflow-hidden">
 
-        {/* 🎥 Video Background */}
         <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/forest2.mp4" type="video/mp4" />
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  poster="/forest2.mp4"
+  className="absolute inset-0 w-full h-full object-cover"
+>
+  <source src="/forest2.mp4" type="video/mp4" />
+</video>
+
 
         </video>
 
         {/* 🌿 Dark Overlay */}
-        <div className="absolute inset-0 bg-[#0f2a1c]/60 z-10" />
+        <div className="absolute inset-0 bg-[#0f2a1c]/60" />
 
         {/* Navbar */}
         {/* <Navbar /> */}
