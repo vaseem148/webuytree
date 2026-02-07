@@ -7,14 +7,16 @@ const Home = () => {
         {/* 🎥 Video Background */}
         <video
   autoPlay
-  muted
   loop
+  muted
   playsInline
-  controls
-  className="w-full h-96"
+  preload="auto"
+  poster="/forest2.mp4"
+  className="absolute inset-0 w-full h-full object-cover"
 >
   <source src="/forest2.mp4" type="video/mp4" />
 </video>
+
 
 
         {/* 🌿 Dark Overlay */}
