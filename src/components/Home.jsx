@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <section id="home" className="relative min-h-screen text-white overflow-hidden">
+    <section id="home" className="relative z-10 min-h-screen text-white overflow-hidden">
 
         {/* 🎥 Video Background */}
         <video
