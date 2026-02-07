@@ -18,8 +18,6 @@ const Home = () => {
 </video>
 
 
-
-
         {/* 🌿 Dark Overlay */}
         <div className="absolute inset-0 bg-[#0f2a1c]/60" />
 
