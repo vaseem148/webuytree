@@ -5,7 +5,7 @@ const Home = () => {
     <section id="home" className="relative min-h-screen text-white overflow-hidden">
 
         {/* 🎥 Video Background */}
-       <video
+        <video
   autoPlay
   loop
   muted
@@ -13,8 +13,12 @@ const Home = () => {
   preload="auto"
   className="absolute inset-0 w-full h-full object-cover"
 >
-  <source src="/forest2.mp4" type="video/mp4" />
+  <source
+    src="https://res.cloudinary.com/dqar0wfzw/video/upload/forest2_jdyyov.mp4"
+    type="video/mp4"
+  />
 </video>
+
 
 
         {/* 🌿 Dark Overlay */}
