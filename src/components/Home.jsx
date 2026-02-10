@@ -5,13 +5,12 @@ const Home = () => {
     <section id="home" className="relative min-h-screen text-white overflow-hidden">
 
         {/* 🎥 Video Background */}
-        <video
+       <video
   autoPlay
-  muted
   loop
+  muted
   playsInline
   preload="auto"
-  onLoadedData={(e) => e.currentTarget.play()}
   className="absolute inset-0 w-full h-full object-cover"
 >
   <source src="/forest2.mp4" type="video/mp4" />
