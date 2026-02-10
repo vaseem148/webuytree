@@ -98,14 +98,19 @@ const WhyTreesMatter = () => {
           className="relative mt-24 rounded-3xl overflow-hidden"
         >
           <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover scale-105"
-          >
-            <source src="/forest3.mp4" type="video/mp4" />
-          </video>
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="auto"
+  className="absolute inset-0 w-full h-full object-cover scale-105"
+>
+  <source
+    src="https://res.cloudinary.com/dqar0wfzw/video/upload/v1770713404/forest3_gyevgv.mp4"
+    type="video/mp4"
+  />
+</video>
+
 
           <div className="absolute inset-0 bg-[#0f2a1c]/60" />
 

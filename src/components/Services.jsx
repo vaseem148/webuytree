@@ -91,15 +91,19 @@ export default function OurServices() {
               {/* RIGHT VIDEO */}
               <div className="relative h-64 sm:h-80 lg:h-full rounded-2xl sm:rounded-3xl overflow-hidden">
                 <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/forest7.mp4" type="video/mp4" />
-                </video>
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  className="w-full h-full object-cover"
+>
+  <source
+    src="https://res.cloudinary.com/dqar0wfzw/video/upload/v1770713417/forest7_fu0vq2.mp4"
+    type="video/mp4"
+  />
+</video>
+
                 <div className="absolute inset-0 bg-black/30" />
               </div>
             </div>
@@ -122,15 +126,19 @@ export default function OurServices() {
               {/* LEFT VIDEO */}
               <div className="relative h-64 sm:h-80 lg:h-full rounded-2xl sm:rounded-3xl overflow-hidden order-2 lg:order-1">
                 <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/s1.mp4" type="video/mp4" />
-                </video>
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  className="w-full h-full object-cover"
+>
+  <source
+    src="https://res.cloudinary.com/dqar0wfzw/video/upload/v1770713412/s1_bwr388.mp4"
+    type="video/mp4"
+  />
+</video>
+
                 <div className="absolute inset-0 bg-white/15" />
               </div>
 
