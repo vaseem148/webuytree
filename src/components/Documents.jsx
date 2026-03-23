@@ -47,7 +47,7 @@ export default function DocumentsRequired() {
             variants={fadeUp}
             className="inline-block mb-6 px-5 py-2 text-sm rounded-full bg-[#e8efe6] text-[#2f4f3a]"
           >
-            Legal Requirements
+            Legal Requirement
           </motion.span>
 
           <motion.h2
